@@ -25,6 +25,7 @@ jobs:
     - name: Configure CMake
       run: |
         sudo apt-get update
+        sudo apt install -y libmbedtls-dev
         git submodule update --init --recursive
         cd deps
         cd libevent
