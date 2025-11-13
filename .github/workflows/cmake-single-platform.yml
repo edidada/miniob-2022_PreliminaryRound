@@ -25,27 +25,22 @@ jobs:
     - name: Configure CMake
       run: |
         sudo apt-get update
-        git submodule add https://github.com/libevent/libevent deps/libevent
         cd deps
         cd libevent
-        git checkout release-2.1.12-stable
         mkdir build
         cd build
         cmake .. -DEVENT__DISABLE_OPENSSL=ON
         make
         sudo make install
         cd ../../../
-        git submodule add https://github.com/google/googletest deps/googletest
         cd deps
         cd googletest
-        git checkout v1.10.x
         mkdir build
         cd build
         cmake .. -DGTEST_HAS_PTHREAD=0 -DCMAKE_CXX_FLAGS="-Wno-error=maybe-uninitialized"
         make
         sudo make install
         cd ../../../
-        git submodule add https://github.com/open-source-parsers/jsoncpp.git deps/jsoncpp
         cd deps
         cd jsoncpp
         mkdir build
